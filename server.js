@@ -1,5 +1,6 @@
 const express = require('express')
 const { request, response } = require('express')
+const cors = require('cors')
 const app = express()
 
 const entriesRouter = require('./src/routes/entries')
@@ -12,6 +13,8 @@ app.use(express.json())
 
 //Aqui se monta el enrutador montado XD
 app.use('/entries', entriesRouter)
+
+app.use(cors())
 
 app.use('/writers', writersRouter)
 
