@@ -5,6 +5,8 @@ const app = express()
 const entriesRouter = require('./src/routes/entries')
 const writersRouter = require('./src/routes/writers')
 
+const authRouter = require('./src/routes/auth')
+
 
 //Este es un middleware
 app.use(express.json())
@@ -13,6 +15,8 @@ app.use(express.json())
 app.use('/entries', entriesRouter)
 
 app.use('/writers', writersRouter)
+
+app.use('/', authRouter)
 
 app.get('/', (request, response) => {
   response.json({
