@@ -1,8 +1,10 @@
 const Writers = require('../models/writers')
 
-
 function getAll() {
   return Writers.find()
+}
+function getById(writerId) {
+  return Writers.findById(writerId)
 }
 
 function create(writerData) {
@@ -19,6 +21,7 @@ function update(writerId, newWriterData) {
 
 module.exports = {
   getAll,
+  getById,
   create,
   remove,
   update,

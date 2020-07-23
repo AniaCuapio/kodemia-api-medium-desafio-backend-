@@ -20,6 +20,25 @@ router.get('/', async (request, response) => {
   }
 })
 
+router.get('/:id', async (request, response) => {
+  try {
+    const id = request.params.id
+    const entryById = await entries.getById(id)
+    response.json({
+      success: true,
+      data: {
+        entry: entryById,
+      },
+    })
+  } catch (error) {
+    response.status(400)
+    response.json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
 router.post('/', async (request, response) => {
   try {
     const newEntryData = request.body
