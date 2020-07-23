@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 const entriesSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -21,21 +21,21 @@ const entriesSchema = new mongoose.Schema({
     type: String,
     require: true,
     enum: [
-      "Momentum",
-      "Coranavirus",
-      "Gen",
-      "Elemental",
-      "OneZero",
-      "Forge",
-      "Human Parts",
-      "Mind Cafe",
-      "UX Collective",
-      "The Journal Blog",
+      'Momentum',
+      'Coronavirus',
+      'Gen',
+      'Elemental',
+      'OneZero',
+      'Forge',
+      'Human Parts',
+      'Mind Cafe',
+      'UX Collective',
+      'The Journal Blog',
     ],
   },
   date: {
     type: Date,
   },
-});
+})
 
-module.exports = mongoose.model("entries", entriesSchema);
+module.exports = mongoose.model('entries', entriesSchema)
