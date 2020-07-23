@@ -32,11 +32,11 @@ async function signUp(writerData) {
 async function login(email, password) {
   const writerByEmail = await Writers.findOne({ email });
   if (!writerByEmail) {
-    throw new Error ('Error de login')
+    throw new Error ('Email no encontrado')
   } 
   const isValid =  await bcrypt.compare (password, writerByEmail.password)
   if (!isValid) {
-    throw new Error ('Error de login')
+    throw new Error ('Error de contraseña')
   }
   return jwt.sign ({id: writerByEmail._id})
 }
