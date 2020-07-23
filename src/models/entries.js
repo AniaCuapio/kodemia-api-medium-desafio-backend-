@@ -22,7 +22,7 @@ const entriesSchema = new mongoose.Schema({
     require: true,
     enum: [
       "Momentum",
-      "Coranavirus",
+      "Coronavirus",
       "Gen",
       "Elemental",
       "OneZero",
