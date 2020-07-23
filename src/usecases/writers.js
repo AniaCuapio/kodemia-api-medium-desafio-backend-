@@ -1,5 +1,6 @@
 const Writers = require("../models/writers");
 const bcrypt = require("../lib/bcrypt");
+const jwt = require("../lib/jwt");
 
 function getAll() {
   return Writers.find();
@@ -29,12 +30,13 @@ async function signUp(writerData) {
   });
 }
 
-async function login(email, password) {
-  const writerByEmail = await Writers.findOne({ email });
+async function login(mail, password) {
+  const writerByEmail = await Writers.findOne({ mail });
   if (!writerByEmail) {
     throw new Error ('Email no encontrado')
   } 
   const isValid =  await bcrypt.compare (password, writerByEmail.password)
+  console.log(isValid, mail, password, writerByEmail)
   if (!isValid) {
     throw new Error ('Error de contraseña')
   }

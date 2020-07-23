@@ -24,8 +24,8 @@ router.post('/sign-up', async (request, response) => {
 
 router.post('/sign-in', async (request, response) => {
     try {
-        const {email, password} = request.body
-        const token = await writer.login(email, password)
+        const {mail, password} = request.body
+        const token = await writer.login(mail, password)
         response.json({ 
             success: true,
             data: {

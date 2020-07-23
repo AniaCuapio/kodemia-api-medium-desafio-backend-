@@ -1,8 +1,9 @@
 const express = require('express')
 const writers = require('../usecases/writers')
 const router = express.Router()
+const auth = require('../middleware/auth')
 
-router.get('/', async (request, response) => {
+router.get('/', auth, async (request, response) => {
   try {
     const allWriters = await writers.getAll()
     response.json({
@@ -20,7 +21,7 @@ router.get('/', async (request, response) => {
   }
 })
 
-router.get('/:id', async (request, response) => {
+router.get('/:id', auth, async (request, response) => {
   try {
     const id = request.params.id
     const writerById = await writers.getById(id)
@@ -41,7 +42,7 @@ router.get('/:id', async (request, response) => {
 
 
 
-router.post('/', async (request, response) => {
+router.post('/', auth, async (request, response) => {
   try {
     const newWritersData = request.body
     const newWriter = await writers.create(newWritersData)
@@ -60,7 +61,7 @@ router.post('/', async (request, response) => {
   }
 })
 
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', auth, async (request, response) => {
   try {
     const id = request.params.id
     const remove = await writers.remove(id)
@@ -77,7 +78,7 @@ router.delete('/:id', async (request, response) => {
   }
 })
 
-router.patch('/:id', async (request, response) => {
+router.patch('/:id', auth, async (request, response) => {
   try {
     const id = request.params.id
     const newWriterData = request.body

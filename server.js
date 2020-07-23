@@ -5,8 +5,7 @@ const app = express()
 const entriesRouter = require('./src/routes/entries')
 const writersRouter = require('./src/routes/writers')
 
-const authRouter = require('./src/routes/auth')
-
+const authRouter = require('./src/routes/auth') 
 
 //Este es un middleware
 app.use(express.json())

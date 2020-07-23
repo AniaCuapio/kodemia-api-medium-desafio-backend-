@@ -1,6 +1,7 @@
 const express = require('express')
 const entries = require('../usecases/entries')
 const router = express.Router()
+const auth = require('../middleware/auth')
 
 router.get('/', async (request, response) => {
   try {
@@ -39,7 +40,7 @@ router.get('/:id', async (request, response) => {
   }
 })
 
-router.post('/', async (request, response) => {
+router.post('/', auth, async (request, response) => {
   try {
     const newEntryData = request.body
     const newEntry = await entries.create(newEntryData)
@@ -58,7 +59,7 @@ router.post('/', async (request, response) => {
   }
 })
 
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', auth, async (request, response) => {
   try {
     const id = request.params.id
     const remove = await entries.remove(id)
@@ -75,7 +76,7 @@ router.delete('/:id', async (request, response) => {
   }
 })
 
-router.patch('/:id', async (request, response) => {
+router.patch('/:id', auth, async (request, response) => {
   try {
     const id = request.params.id
     const newEntryData = request.body
