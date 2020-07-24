@@ -1,3 +1,5 @@
+//Nospermite acceder a una variable de entorno el .env
+
 const mongoose = require("mongoose");
 
 require("dotenv").config();

@@ -1,4 +1,4 @@
-//function hash
+//function hash encriptar
 const bcrypt = require ('bcrypt')
 const saltRound = 10
 

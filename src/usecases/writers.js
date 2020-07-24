@@ -22,7 +22,11 @@ function update(writerId, newWriterData) {
 }
 
 async function signUp(writerData) {
-  const { password } = writerData;
+  const { password, mail } = writerData;
+  const writerByEmail = await Writers.findOne({ mail })
+  if (writerByEmail) {
+    throw new Error ('email ya utilizado')
+  }
   const encriptedPassword = await bcrypt.hash(password);
   return Writers.create({
     ...writerData,

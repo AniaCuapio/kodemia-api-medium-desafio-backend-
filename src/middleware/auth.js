@@ -1,7 +1,7 @@
 /*Mandando llamar la libreria de JWT*/
 const jwt = require("../lib/jwt")
 const { response } = require("express")
-
+//Este  middleware verifica que el archivo este autorizado que exista el token
 function auth (request, response, next) {
     try{
         const {authorization} = request.headers
